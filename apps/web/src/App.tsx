@@ -263,6 +263,7 @@ export const App: React.FC = () => {
     if (route === '/routes') {
       return (
         <AppShell
+          onBack={() => navigate('/p1-welcome')}
           topTitle="Route directory (P1–P34)"
           topRightAction={{ label: 'UI Kit', onClick: () => navigate('/ui-kit') }}
           showBottomNav
