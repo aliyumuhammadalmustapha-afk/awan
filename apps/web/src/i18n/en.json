@@ -1,0 +1,564 @@
+{
+  "app": {
+    "name": "Awan",
+    "tagline": "Know your potential as it changes.",
+    "subline": "A private guide to understanding your reproductive health over time, and when it's worth acting.",
+    "disclaimer": "Awan doesn't diagnose or recommend treatment.",
+    "notADiagnosis": "Not a diagnosis",
+    "decisionsStayWithClinician": "Decisions stay with the clinician."
+  },
+  "common": {
+    "next": "Next",
+    "back": "Back",
+    "skip": "Skip",
+    "skipForNow": "Skip for now",
+    "getStarted": "Get started",
+    "continue": "Continue",
+    "start": "Start",
+    "saveAndFinishLater": "Save and finish later",
+    "whyWeAsk": "Why we ask",
+    "preferNotToSay": "Prefer not to say",
+    "edit": "Edit",
+    "remove": "Remove",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "close": "Close",
+    "later": "Later",
+    "maybeLater": "Maybe later",
+    "optional": "Optional",
+    "storedOnThisPhone": "Stored on this phone",
+    "demoLabel": "Demo",
+    "comingSoon": "Coming soon",
+    "comingLater": "Coming later",
+    "alreadyHaveAccountSignIn": "I already have an account · Sign in"
+  },
+  "banners": {
+    "demo": "Concept prototype · synthetic data",
+    "offline": "You're offline. Saved data and check-ins still work on this phone.",
+    "passOffline": "You're offline. Passes need a connection.",
+    "updateAvailable": "A new version of Awan is ready.",
+    "refresh": "Refresh",
+    "syntheticDashboard": "Synthetic demo data"
+  },
+  "nav": {
+    "home": "Home",
+    "results": "Results",
+    "share": "Share",
+    "account": "Account"
+  },
+  "levels": {
+    "L0": {
+      "label": "Keep going",
+      "headline": "Things look steady right now.",
+      "primaryAction": "Set my re-check",
+      "recheckWindow": "about 6 months"
+    },
+    "L1": {
+      "label": "Worth a conversation",
+      "headline": "A few details are worth discussing at a routine visit.",
+      "primaryAction": "Plan a routine visit",
+      "recheckWindow": "about 3 months"
+    },
+    "L2": {
+      "label": "Talk to someone soon",
+      "headline": "Timing or symptoms suggest speaking with a clinician soon.",
+      "primaryAction": "Book a visit soon",
+      "recheckWindow": "about 4 weeks"
+    },
+    "L3": {
+      "label": "Don't wait",
+      "headline": "Speak with your care team before treatment begins.",
+      "primaryAction": "Contact your care team",
+      "recheckWindow": "about 2 weeks"
+    },
+    "U": {
+      "label": "Not enough information",
+      "headline": "We need a few key details before giving a clear direction.",
+      "primaryAction": "Add what's missing",
+      "recheckWindow": "about 2 weeks"
+    }
+  },
+  "confidence": {
+    "high": "Fairly confident",
+    "medium": "Some gaps",
+    "low": "Limited information"
+  },
+  "sourceTags": {
+    "selfReported": "Self-reported",
+    "labReported": "Lab-reported",
+    "recalled": "Recalled",
+    "labUploadedUnverified": "Lab-reported (uploaded by you, not verified)"
+  },
+  "onboarding": {
+    "howItWorks": [
+      {
+        "code": "P2",
+        "icon": "calendar-check",
+        "title": "You choose when.",
+        "body": "Check in whenever you're ready. Nothing starts until you tap. Awan doesn't diagnose or recommend treatment."
+      },
+      {
+        "code": "P3",
+        "icon": "list-checks",
+        "title": "A clear, calm answer.",
+        "body": "Get a plain-language result with what can change and what to do next. Awan doesn't diagnose or recommend treatment."
+      },
+      {
+        "code": "P4",
+        "icon": "trending-up",
+        "title": "See your direction.",
+        "body": "Check in again later and see whether things are steady or shifting. Awan doesn't diagnose or recommend treatment."
+      },
+      {
+        "code": "P5",
+        "icon": "shield",
+        "title": "You stay in control.",
+        "body": "Your information stays on your phone. Share with a doctor only what you choose. Awan doesn't diagnose or recommend treatment."
+      }
+    ],
+    "phone": {
+      "step": "Step 1 of 4",
+      "title": "What's your phone number?",
+      "helper": "We use it only to sign you in. It's never shared, never used for marketing, and never used for work or insurance decisions.",
+      "demoChip": "Demo mode: use any made-up number.",
+      "action": "Send code",
+      "error": "Enter a valid phone number with at least 7 digits."
+    },
+    "code": {
+      "step": "Step 2 of 4",
+      "title": "Enter the 6-digit code",
+      "sentToPrefix": "Sent to",
+      "demoChip": "Demo mode: the code is 123456",
+      "error": "That code didn't match. Try again.",
+      "resendIn": "Resend code in",
+      "resendNow": "Resend code",
+      "action": "Continue"
+    },
+    "name": {
+      "step": "Step 3 of 4",
+      "title": "What should we call you?",
+      "helper": "A nickname is fine. It stays on this phone.",
+      "placeholder": "Your name or nickname",
+      "error": "Tell us a name or nickname to use."
+    },
+    "pin": {
+      "step": "Step 4 of 4",
+      "createTitle": "Create a 4-digit PIN",
+      "confirmTitle": "Confirm your 4-digit PIN",
+      "warningCard": "If you forget it, you'll need to reset and the data on this phone will be erased.",
+      "mismatchError": "Those PINs didn't match. Try again.",
+      "createAction": "Continue to confirm PIN",
+      "confirmAction": "Save PIN"
+    },
+    "who": {
+      "title": "Who is this for?",
+      "helper": "This helps us ask the right questions. You can change it later.",
+      "options": {
+        "female": "Female",
+        "male": "Male",
+        "topics": "Let me choose topics",
+        "somethingElse": "Something else",
+        "preferNot": "Prefer not to say"
+      },
+      "customLabel": "In your own words",
+      "customPlaceholder": "Type up to 60 characters"
+    },
+    "topics": {
+      "title": "Which topics would you like to include?",
+      "helper": "Choose as many as you like. You can change these any time.",
+      "options": {
+        "cycles": "Cycles and periods",
+        "timing": "Timing and trying",
+        "male": "Male reproductive health",
+        "conditions": "Health conditions",
+        "treatment": "A medical treatment that may affect fertility",
+        "notSure": "Not sure, show me what's relevant"
+      }
+    },
+    "stage": {
+      "title": "Where are you right now?",
+      "customLabel": "Let me type it",
+      "customPlaceholder": "Describe where you are right now",
+      "options": {
+        "thinking_ahead": {
+          "title": "Thinking ahead",
+          "desc": "Not trying right now, just checking where things stand."
+        },
+        "preparing": {
+          "title": "Preparing for a family",
+          "desc": "Planning ahead and wanting to be ready."
+        },
+        "trying": {
+          "title": "Trying for a family",
+          "desc": "Currently trying to conceive."
+        },
+        "something_else": {
+          "title": "Something else",
+          "desc": "Let me type it"
+        },
+        "prefer_not": {
+          "title": "Prefer not to say",
+          "desc": "Keep my stage general."
+        }
+      }
+    },
+    "birth": {
+      "title": "When were you born?",
+      "helper": "Used only to apply the right guidance for your age. It stays on this phone."
+    },
+    "privacy": {
+      "title": "Save your check-ins on this phone?",
+      "helper": "This lets you see your direction over time. It stays on this phone and you can delete it any time.",
+      "saveYes": "Yes, save them (recommended)",
+      "saveNo": "No, don't save",
+      "consentsTitle": "Consent settings",
+      "consents": {
+        "results": {
+          "label": "Save optional lab results and reports",
+          "desc": "Off by default. Lets you attach or type test values on this phone."
+        },
+        "notes": {
+          "label": "Save my own-words notes",
+          "desc": "Off by default. Keeps personal notes alongside your check-in."
+        },
+        "recalled": {
+          "label": "Save recalled cycle or health history",
+          "desc": "Off by default. Keeps your comparison with a year ago on this phone."
+        },
+        "doctorPass": {
+          "label": "Allow Doctor Pass sharing",
+          "desc": "Off by default. Lets you create an encrypted, time-limited link for a clinician."
+        },
+        "anonymousCounts": {
+          "label": "Share anonymous system counts",
+          "desc": "Off by default. Sends coarse, non-identifying counts to measure early action."
+        }
+      },
+      "discreetTitle": "Keep notifications discreet",
+      "discreetDesc": "Never show health details on your lock screen.",
+      "remindersTitle": "Reminder frequency",
+      "reminders": {
+        "3m": "Every 3 months",
+        "6m": "Every 6 months",
+        "manual": "Only when I choose",
+        "off": "Off",
+        "customDateLabel": "Choose your reminder date"
+      },
+      "previewLabel": "Discreet notification preview",
+      "previewBody": "A quick check-in is ready when you are."
+    },
+    "a2hs": {
+      "title": "Add Awan to your home screen",
+      "helper": "Keep Awan one tap away like a regular app, without going through an app store.",
+      "step1": "1. Tap the browser menu or share icon.",
+      "step2": "2. Choose 'Add to Home screen'.",
+      "step3": "3. Open Awan any time with your PIN.",
+      "action": "Show me how",
+      "sheetTitle": "How to add Awan to your home screen",
+      "sheetBody": "On iPhone Safari, tap Share at the bottom and choose Add to Home Screen. On Android Chrome, tap the three-dot menu at the top right and choose Add to Home screen."
+    },
+    "allSet": {
+      "titlePrefix": "You're all set,",
+      "body": "Nothing starts until you choose. You can check your direction now or come back whenever you're ready.",
+      "action": "Check my direction now"
+    },
+    "lock": {
+      "title": "Awan",
+      "subtitle": "Enter your 4-digit PIN to unlock",
+      "unlockAction": "Unlock",
+      "forgotPin": "Forgot PIN?",
+      "wrongPin": "That PIN didn't match. Try again.",
+      "delayMessage": "Too many attempts. Please wait 30 seconds before trying again.",
+      "resetSheetTitle": "Reset Awan and erase saved data?",
+      "resetSheetBody": "Because your data is encrypted with your PIN on this phone, resetting your PIN will permanently erase saved check-ins on this phone.",
+      "resetConfirm": "Erase data and start fresh"
+    }
+  },
+  "home": {
+    "greetingPrefix": "Hello,",
+    "emptyMessage": "You haven't completed a check-in yet. Nothing starts until you choose.",
+    "checkMyDirection": "Check my direction",
+    "latestCheckInTitle": "Latest direction",
+    "whatChangedPrefix": "What changed:",
+    "whatChangedInitial": "First check-in recorded on this phone.",
+    "whatChangedShifting": "Direction shifted since your earlier check-in.",
+    "whatChangedSteady": "Steady compared with your earlier check-in.",
+    "nextCheckInTitle": "Suggested next check-in",
+    "followUpTitle": "Did you speak to someone?",
+    "followUpBody": "Let us know how your visit went or if something got in the way.",
+    "followUpAction": "Update follow-up",
+    "anythingChangedPrefix": "Anything changed since"
+  },
+  "checkin": {
+    "start": {
+      "title": "Check my direction",
+      "body": "About 3 minutes. Skip anything you like.",
+      "helper": "Your answers stay on this phone and are evaluated by transparent rules, never AI.",
+      "action": "Start"
+    },
+    "addResults": {
+      "title": "Add a result?",
+      "subtitle": "Optional · Use the lab's own reference range.",
+      "typeRowTitle": "Type a result",
+      "typeRowDesc": "Enter values and the lab's reference range.",
+      "attachRowTitle": "Attach a report",
+      "attachRowDesc": "Keep a PDF, JPG or PNG alongside typed values.",
+      "skipRowTitle": "Skip for now",
+      "skipRowDesc": "Continue without adding lab results.",
+      "attachHelper": "We never read the document. Type the values from it.",
+      "ageNotice": "Results older than 6 months count for less.",
+      "plausibilityWarning": "That value looks unusual. Check it before saving.",
+      "confirmPlausible": "I checked the report and confirm this value is correct",
+      "saveAction": "Save result"
+    },
+    "ownWords": {
+      "title": "Anything in your own words?",
+      "subtitle": "Optional",
+      "label": "Your note",
+      "placeholder": "Write any questions or context you want to remember...",
+      "helper": "This is saved for you and never changes your result. It's shared only if you choose.",
+      "includeSwitchLabel": "Include in Doctor Pass",
+      "includeSwitchDesc": "Show this note when you create a pass for a clinician.",
+      "urgentCard": "If something feels urgent or new, don't wait for the app. Speak to a clinician."
+    },
+    "review": {
+      "title": "Review your check-in",
+      "subtitle": "Check your answers before seeing your direction.",
+      "answersSection": "Your check-in answers",
+      "resultsSection": "Lab results",
+      "noResults": "No lab results added",
+      "noteSection": "Your own words",
+      "noNote": "No personal note added",
+      "action": "See my result"
+    },
+    "nextStep": {
+      "title": "Your next step",
+      "checklistTitle": "Before your next step",
+      "check1": "Book a visit or set your re-check date",
+      "check2": "Create and bring your Doctor Pass if speaking with a clinician",
+      "check3": "Note any recent cycle, symptom or lab dates",
+      "questionsTitle": "Questions to ask a clinician",
+      "q1": "Based on my timeline and history, are any baseline tests worth doing now?",
+      "q2": "What changes should prompt me to come back sooner?",
+      "q3": "Should my partner also have an early check-in or evaluation?",
+      "remindSwitchLabel": "Remind me to follow up",
+      "remindSwitchDesc": "Send a discreet check-in nudge on this phone.",
+      "action": "Back to Home"
+    }
+  },
+  "resultCard": {
+    "whatCanChange": "What can change",
+    "whatCantChange": "What can't change",
+    "whatWeDontKnow": "What we don't know yet",
+    "noGaps": "All key questions for your stage were answered today.",
+    "howSureWeAre": "How sure we are",
+    "basedOnRulesPrefix": "Based on rules",
+    "basedOnBaseline": "Based on all key checks present",
+    "recheckPrefix": "We suggest checking again around",
+    "addAResult": "Add a result",
+    "shareWithDoctor": "Share with a doctor",
+    "needSupport": "Need support?",
+    "supportSheetTitle": "Calm support and resources",
+    "supportSheetBody": "If you feel worried or have urgent symptoms, speaking directly with a qualified clinician or local health helpline is always the safest step. Awan is a guide to help you prepare, not a substitute for care.",
+    "urgentNotice": "If something feels urgent or new, don't wait for the app. Speak to a clinician."
+  },
+  "account": {
+    "title": "Account",
+    "lockNow": "Lock now",
+    "signOut": "Sign out",
+    "rows": {
+      "profile": { "title": "Profile", "desc": "Nickname, birth month and year, question set, stage and language" },
+      "privacy": { "title": "Privacy and consent", "desc": "Control what is saved on this phone and optional sharing" },
+      "notifications": { "title": "Notifications", "desc": "Reminder rhythm, quiet hours and discreet preview" },
+      "security": { "title": "Security and discretion", "desc": "4-digit PIN, auto-lock timer and lock on background" },
+      "sharing": { "title": "Sharing", "desc": "Active Doctor Passes, access log and revoke controls" },
+      "data": { "title": "Your data", "desc": "Download a copy or erase all saved data on this phone" },
+      "about": { "title": "About and safety", "desc": "Intended use, rule transparency, limits and demo controls" },
+      "signin": { "title": "Sign-in", "desc": "Phone number, sign out and UAE Pass status" }
+    },
+    "profile": {
+      "title": "Profile",
+      "languageTitle": "Language",
+      "english": "English",
+      "arabic": "Arabic · Coming soon",
+      "saveAction": "Save profile"
+    },
+    "privacy": {
+      "title": "Privacy and consent",
+      "lastChangedPrefix": "Last changed:",
+      "turnOffSheetTitle": "Keep or delete what's saved?",
+      "turnOffSheetBody": "You turned off this setting. Would you like to keep items already saved on this phone, or delete them now?",
+      "keepSaved": "Keep what's saved",
+      "deleteSaved": "Delete what's saved"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "timeLabel": "Preferred time",
+      "quietHoursLabel": "Quiet hours",
+      "quietHoursValue": "21:00 to 08:00 (no notifications sent)",
+      "followUpSwitch": "Follow-up reminders",
+      "followUpDesc": "Gentle check-in after a recommended visit.",
+      "pauseAll": "Pause all reminders"
+    },
+    "security": {
+      "title": "Security and discretion",
+      "changePin": "Change 4-digit PIN",
+      "autoLockTitle": "Auto-lock timer",
+      "autoLockImmediate": "Immediately",
+      "autoLock1m": "After 1 minute",
+      "autoLock5m": "After 5 minutes",
+      "lockOnBg": "Lock when app goes to background",
+      "lockOnBgDesc": "Requires your 4-digit PIN whenever you switch apps."
+    },
+    "sharing": {
+      "title": "Sharing and access log",
+      "activePassesTitle": "Your Doctor Passes",
+      "accessLogTitle": "Recent pass access log",
+      "revokeAll": "Revoke all active passes",
+      "revokeSheetTitle": "Revoke all active passes?",
+      "revokeSheetBody": "Clinicians with existing links will immediately see that the pass is no longer available."
+    },
+    "data": {
+      "title": "Your data",
+      "downloadAction": "Download my data (JSON)",
+      "deleteAllAction": "Delete all my data",
+      "deleteAccountAction": "Delete account",
+      "backupRow": "Back up and use on more than one device",
+      "deleteSheetTitle": "Delete all saved data on this phone?",
+      "deleteSheetBody": "This permanently erases your profile, check-ins, lab results, notes and passes from this phone. This cannot be undone."
+    },
+    "about": {
+      "title": "About and safety",
+      "intendedUseTitle": "Intended use",
+      "intendedUseBody": "Awan helps adults understand how their reproductive health is changing over time and when it may be worth speaking to a professional. It does not diagnose, predict fertility, or recommend treatment.",
+      "howRulesWorkTitle": "How the rules work",
+      "howRulesWorkBody": "Every output is generated by a written, deterministic rule engine with no AI in the decision. Every result card shows the exact rule IDs behind it.",
+      "limitsTitle": "Honest limitations",
+      "limitsBody": "Thresholds follow common public guidelines and are marked unreviewed until a clinician confirms them. A web-app lock provides discretion on a shared phone but is weaker than native OS encryption.",
+      "reopenIntro": "How Awan works (reopen intro)",
+      "version": "Version 1.0.0 · Concept prototype",
+      "demoControlsTitle": "Demo controls",
+      "loadDemoPerson": "Load demo person",
+      "resetDemo": "Reset demo"
+    },
+    "signin": {
+      "title": "Sign-in",
+      "signedInAs": "Signed in with phone number",
+      "uaePass": "Sign in with UAE Pass",
+      "signOutSheetTitle": "Keep my data on this phone?",
+      "signOutSheetBody": "Signing back in will require your phone number, verification code and 4-digit PIN.",
+      "keepDataSignOut": "Keep my data and sign out",
+      "eraseDataSignOut": "Erase my data and sign out"
+    }
+  },
+  "systemStates": {
+    "title": "System states",
+    "corruptedTitle": "We couldn't read your saved data. Start fresh?",
+    "corruptedBody": "The local storage on this phone appears corrupted or unreadable. You can load a demo person or start fresh.",
+    "errorTitle": "Something went wrong.",
+    "errorBody": "Your saved data on this phone is untouched. Return to Home to continue.",
+    "backToHome": "Back to Home"
+  },
+  "share": {
+    "title": "Share",
+    "subtitle": "Create a private, time-limited Doctor Pass for a clinician.",
+    "createNewPass": "Create a new pass",
+    "emptyMessage": "You haven't created a Doctor Pass yet. Nothing is shared unless you choose.",
+    "statusActive": "Active",
+    "statusExpired": "Expired",
+    "statusRevoked": "Revoked",
+    "expiresPrefix": "Expires",
+    "create": {
+      "title": "Create a Doctor Pass",
+      "scopeTitle": "Choose what to include",
+      "scopeAnswers": "Check-in answers and direction",
+      "scopeResults": "Typed lab results",
+      "scopeAttachments": "Attached report labels (unverified)",
+      "scopeNote": "Your own-words note",
+      "durationTitle": "How long should this pass stay open?",
+      "previewAction": "Preview what your clinician will see",
+      "previewSheetTitle": "What your clinician will see",
+      "generateAction": "Create encrypted pass",
+      "readyTitle": "Doctor Pass ready",
+      "linkHelper": "The decryption key stays in the # part of this link and never reaches our server.",
+      "copyLink": "Copy link",
+      "copied": "Link copied",
+      "viewAccessLog": "View access log",
+      "openClinicianView": "Open clinician view",
+      "revokePass": "Revoke pass",
+      "revokeSheetTitle": "Revoke this Doctor Pass?",
+      "revokeSheetBody": "Anyone opening this link will immediately see that the pass is no longer available."
+    }
+  },
+  "clinicianView": {
+    "headerStripPrefix": "Shared by patient · View only · Expires",
+    "summaryTitle": "Patient-shared reproductive health summary",
+    "timelineTitle": "Check-in timeline",
+    "resultsTitle": "Laboratory & self-reported results",
+    "attachmentsTitle": "Attached reports",
+    "attachmentsNote": "Lab-reported (uploaded by you, not verified) · Document contents were not parsed by Awan.",
+    "noteTitle": "Patient's own-words note",
+    "gapsTitle": "Data gaps & missing context",
+    "unavailableTitle": "This pass is no longer available.",
+    "unavailableBodyExpired": "This Doctor Pass has passed its expiry time and can no longer be viewed.",
+    "unavailableBodyRevoked": "The patient revoked this Doctor Pass."
+  },
+  "trend": {
+    "title": "Your direction",
+    "startingPoint": "Starting point",
+    "steady": "Direction: steady",
+    "shifting": "Direction: shifting",
+    "steadySupport": "Your recent check-ins show the same calm level over time.",
+    "shiftingSupport": "Something changed between your earlier check-in and your latest one.",
+    "startingSupport": "This is your baseline check-in. Checking in again later will show your direction.",
+    "noSaveEmpty": "You chose not to save check-ins on this phone, so there is no timeline to show.",
+    "enableSaving": "Turn on saving in Privacy",
+    "recheckAction": "Check my direction"
+  },
+  "resultsTab": {
+    "title": "Results",
+    "subtitle": "Lab results and reports stored on this phone.",
+    "stillMissingTitle": "Still missing",
+    "stillMissingBody": "Adding recent baseline hormone or semen results (with your lab's own reference range) helps sharpen your picture.",
+    "emptyMessage": "You haven't added any lab results yet. They are always optional.",
+    "addResult": "Add a result"
+  },
+  "followUp": {
+    "title": "Follow-up",
+    "question": "Did you speak to someone?",
+    "helper": "Your answer helps you track your next step and never lowers your direction level.",
+    "optYes": "Yes",
+    "optBooked": "Booked, not yet",
+    "optNotYet": "Not yet",
+    "optDecidedNo": "I decided not to",
+    "optPreferNot": "Prefer not to say",
+    "bookedSheetTitle": "When is your visit?",
+    "bookedDateLabel": "Appointment date",
+    "bookedSavedMsg": "We'll send a calm day-before reminder and a gentle day-after check-in.",
+    "barriersSheetTitle": "What's getting in the way?",
+    "barriersHelper": "Select any that apply. This helps tailor practical next steps.",
+    "yesNextTitle": "Glad you spoke with someone. What next?",
+    "yesNext1": "Add a lab result from your visit",
+    "yesNext2": "Set your next re-check date",
+    "yesNext3": "Back to Home",
+    "saveAction": "Save update"
+  },
+  "dashboard": {
+    "title": "Health-system planner insight",
+    "subtitle": "Opt-in anonymous counts measuring earlier action across Abu Dhabi pathways.",
+    "staffLoginTitle": "Health-system staff sign-in",
+    "staffLoginHelper": "Demo staff credentials are prefilled for this prototype.",
+    "staffEmailLabel": "Staff email",
+    "staffPasswordLabel": "Password",
+    "staffSignInAction": "Sign in to dashboard",
+    "staffLoginError": "Enter a valid staff email and password.",
+    "smallGroupNote": "Groups under 10 are hidden (<10) to prevent re-identification.",
+    "equityTitle": "Equitable reach & median days to contact",
+    "calibrationTitle": "False-reassurance & vignette calibration review",
+    "calibrationNote": "Guideline-derived, not clinician-reviewed · Live execution of 15 clinical vignettes."
+  },
+  "uiKit": {
+    "title": "Awan UI kit",
+    "subtitle": "Single source of truth for components, tokens, states and accessibility."
+  }
+}

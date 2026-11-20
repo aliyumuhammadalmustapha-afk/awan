@@ -1,0 +1,303 @@
+{
+  "schemaVersion": 1,
+  "vignettes": [
+    {
+      "id": "V01",
+      "title": "36 years old, trying for 7 months",
+      "tags": ["timing", "female"],
+      "asOf": "2026-11-17",
+      "input": {
+        "profile": { "questionSet": "female", "pathway": "trying", "ageYears": 36 },
+        "answers": {
+          "upcoming_fertility_affecting_treatment": "no",
+          "trying_duration_months": 7,
+          "cycles_outside_range_12m": "none"
+        },
+        "results": []
+      },
+      "expected": { "level": "L2", "mustFire": ["T2"], "mustNotFire": [] },
+      "severityIfWrong": "major",
+      "rationale": "Age 35 or over and trying for 6 months or more meets the earlier-assessment timing.",
+      "source": { "citation": "Public Guideline", "url": "https://example.com", "accessed": "2026-11-17" },
+      "review": { "status": "guideline-derived", "reviewer": null }
+    },
+    {
+      "id": "V02",
+      "title": "29 years old, trying for 14 months, regular cycles",
+      "tags": ["timing", "female"],
+      "asOf": "2026-11-17",
+      "input": {
+        "profile": { "questionSet": "female", "pathway": "trying", "ageYears": 29 },
+        "answers": {
+          "upcoming_fertility_affecting_treatment": "no",
+          "trying_duration_months": 14,
+          "cycles_outside_range_12m": "none"
+        },
+        "results": []
+      },
+      "expected": { "level": "L2", "mustFire": ["T1"], "mustNotFire": ["T2"] },
+      "severityIfWrong": "major",
+      "rationale": "Under 35 and trying for 12 months or more triggers T1 (L2)."
+    },
+    {
+      "id": "V03",
+      "title": "41 years old, just started trying (1 month)",
+      "tags": ["timing", "female"],
+      "asOf": "2026-11-17",
+      "input": {
+        "profile": { "questionSet": "female", "pathway": "trying", "ageYears": 41 },
+        "answers": {
+          "upcoming_fertility_affecting_treatment": "no",
+          "trying_duration_months": 1,
+          "cycles_outside_range_12m": "none"
+        },
+        "results": []
+      },
+      "expected": { "level": "L2", "mustFire": ["T3"], "mustNotFire": [] },
+      "severityIfWrong": "major",
+      "rationale": "Age 40 or over while trying triggers T3 (L2) without delay."
+    },
+    {
+      "id": "V04",
+      "title": "28 years old, not trying, 3+ irregular cycles outside 21-35 days",
+      "tags": ["female", "cycles"],
+      "asOf": "2026-11-17",
+      "input": {
+        "profile": { "questionSet": "female", "pathway": "thinking_ahead", "ageYears": 28 },
+        "answers": {
+          "upcoming_fertility_affecting_treatment": "no",
+          "cycles_outside_range_12m": "three_or_more"
+        },
+        "results": []
+      },
+      "expected": { "level": "L1", "mustFire": ["F1"], "mustNotFire": [] },
+      "severityIfWrong": "moderate",
+      "rationale": "Irregular cycles (F1) warrant a routine conversation (L1)."
+    },
+    {
+      "id": "V05",
+      "title": "31 years old, periods stopped for 4 months",
+      "tags": ["female", "amenorrhea"],
+      "asOf": "2026-11-17",
+      "input": {
+        "profile": { "questionSet": "female", "pathway": "thinking_ahead", "ageYears": 31 },
+        "answers": {
+          "upcoming_fertility_affecting_treatment": "no",
+          "cycles_outside_range_12m": "three_or_more",
+          "periods_stopped_3m": "yes"
+        },
+        "results": []
+      },
+      "expected": { "level": "L2", "mustFire": ["F2", "F1"], "mustNotFire": [] },
+      "severityIfWrong": "major",
+      "rationale": "Periods stopped 3+ months triggers F2 (L2), overriding F1 (L1)."
+    },
+    {
+      "id": "V06",
+      "title": "35 years old with PCOS, trying for 5 months",
+      "tags": ["female", "conditions", "timing"],
+      "asOf": "2026-11-17",
+      "input": {
+        "profile": { "questionSet": "female", "pathway": "trying", "ageYears": 35 },
+        "answers": {
+          "upcoming_fertility_affecting_treatment": "no",
+          "trying_duration_months": 5,
+          "cycles_outside_range_12m": "three_or_more",
+          "diagnosed_conditions": ["pcos"]
+        },
+        "results": []
+      },
+      "expected": { "level": "L1", "mustFire": ["F4", "T5"], "mustNotFire": ["T2"] },
+      "severityIfWrong": "moderate",
+      "rationale": "PCOS while trying <6m triggers F4 (L1) and approaching 6m at 35 triggers T5 (L1)."
+    },
+    {
+      "id": "V07",
+      "title": "33 years old with endometriosis, trying for 7 months",
+      "tags": ["female", "conditions"],
+      "asOf": "2026-11-17",
+      "input": {
+        "profile": { "questionSet": "female", "pathway": "trying", "ageYears": 33 },
+        "answers": {
+          "upcoming_fertility_affecting_treatment": "no",
+          "trying_duration_months": 7,
+          "cycles_outside_range_12m": "none",
+          "diagnosed_conditions": ["endometriosis"]
+        },
+        "results": []
+      },
+      "expected": { "level": "L2", "mustFire": ["F4"], "mustNotFire": ["T1"] },
+      "severityIfWrong": "major",
+      "rationale": "Known endometriosis while trying 6+ months escalates F4 to L2 even under age 35."
+    },
+    {
+      "id": "V08",
+      "title": "32 years old male, preparing, using exogenous testosterone",
+      "tags": ["male", "hormones"],
+      "asOf": "2026-11-17",
+      "input": {
+        "profile": { "questionSet": "male", "pathway": "preparing", "ageYears": 32 },
+        "answers": {
+          "upcoming_fertility_affecting_treatment": "no",
+          "testicular_history": "no",
+          "testosterone_use": "yes"
+        },
+        "results": []
+      },
+      "expected": { "level": "L1", "mustFire": ["M5"], "mustNotFire": [] },
+      "severityIfWrong": "moderate",
+      "rationale": "Testosterone products trigger M5 (L1) with safety notice not to stop without prescriber."
+    },
+    {
+      "id": "V09",
+      "title": "34 years old male, testicular surgery history, trying 8 months",
+      "tags": ["male", "history"],
+      "asOf": "2026-11-17",
+      "input": {
+        "profile": { "questionSet": "male", "pathway": "trying", "ageYears": 34 },
+        "answers": {
+          "upcoming_fertility_affecting_treatment": "no",
+          "trying_duration_months": 8,
+          "testicular_history": "yes"
+        },
+        "results": []
+      },
+      "expected": { "level": "L2", "mustFire": ["M1"], "mustNotFire": [] },
+      "severityIfWrong": "major",
+      "rationale": "Testicular history while trying 6+ months escalates M1 to L2."
+    },
+    {
+      "id": "V10",
+      "title": "29 years old male, upcoming chemotherapy treatment",
+      "tags": ["urgent", "oncology"],
+      "asOf": "2026-11-17",
+      "input": {
+        "profile": { "questionSet": "male", "pathway": "thinking_ahead", "ageYears": 29 },
+        "answers": {
+          "upcoming_fertility_affecting_treatment": "yes",
+          "testicular_history": "no"
+        },
+        "results": []
+      },
+      "expected": { "level": "L3", "mustFire": ["X1"], "mustNotFire": [] },
+      "severityIfWrong": "critical",
+      "rationale": "Planned gonadotoxic treatment triggers X1 (L3 Don't wait)."
+    },
+    {
+      "id": "V11",
+      "title": "27 years old female, skipped cycle question, nothing else fires",
+      "tags": ["data-quality", "gaps"],
+      "asOf": "2026-11-17",
+      "input": {
+        "profile": { "questionSet": "female", "pathway": "thinking_ahead", "ageYears": 27 },
+        "answers": {
+          "upcoming_fertility_affecting_treatment": "no"
+        },
+        "results": []
+      },
+      "expected": { "level": "U", "mustFire": ["D1"], "mustNotFire": [] },
+      "severityIfWrong": "critical",
+      "rationale": "Missing key cycle information with no fired rule must return U, never L0."
+    },
+    {
+      "id": "V12",
+      "title": "26 years old female, all keys normal, smoker",
+      "tags": ["lifestyle", "baseline"],
+      "asOf": "2026-11-17",
+      "input": {
+        "profile": { "questionSet": "female", "pathway": "thinking_ahead", "ageYears": 26 },
+        "answers": {
+          "upcoming_fertility_affecting_treatment": "no",
+          "cycles_outside_range_12m": "none",
+          "habits_smoking_alcohol": "yes"
+        },
+        "results": []
+      },
+      "expected": { "level": "L0", "mustFire": [], "mustNotFire": ["D1"] },
+      "severityIfWrong": "moderate",
+      "rationale": "All keys present and normal gives L0; smoking (X2) adds educational action without changing level."
+    },
+    {
+      "id": "V13",
+      "title": "36 years old female, trying 7m, normal AMH lab result",
+      "tags": ["monotonicity", "labs"],
+      "asOf": "2026-11-17",
+      "input": {
+        "profile": { "questionSet": "female", "pathway": "trying", "ageYears": 36 },
+        "answers": {
+          "upcoming_fertility_affecting_treatment": "no",
+          "trying_duration_months": 7,
+          "cycles_outside_range_12m": "none"
+        },
+        "results": [
+          {
+            "id": "r1",
+            "testType": "AMH",
+            "value": 2.4,
+            "unit": "ng/mL",
+            "refLow": 1.0,
+            "refHigh": 4.0,
+            "date": "2026-10-01",
+            "source": "lab-reported",
+            "confirmed": true
+          }
+        ]
+      },
+      "expected": { "level": "L2", "mustFire": ["T2"], "mustNotFire": ["D4"] },
+      "severityIfWrong": "critical",
+      "rationale": "A normal lab result within range never lowers a level triggered by timing or symptoms."
+    },
+    {
+      "id": "V14",
+      "title": "30 years old male, semen concentration below lab reference range",
+      "tags": ["male", "labs"],
+      "asOf": "2026-11-17",
+      "input": {
+        "profile": { "questionSet": "male", "pathway": "preparing", "ageYears": 30 },
+        "answers": {
+          "upcoming_fertility_affecting_treatment": "no",
+          "testicular_history": "no"
+        },
+        "results": [
+          {
+            "id": "r2",
+            "testType": "semen_concentration",
+            "value": 9,
+            "unit": "million/mL",
+            "refLow": 16,
+            "refHigh": 200,
+            "date": "2026-10-15",
+            "source": "lab-reported",
+            "confirmed": true
+          }
+        ]
+      },
+      "expected": { "level": "L1", "mustFire": ["M3", "D4"], "mustNotFire": [] },
+      "severityIfWrong": "major",
+      "rationale": "Semen concentration below lab reference range triggers M3 and D4 (L1)."
+    },
+    {
+      "id": "V15",
+      "title": "34 years 11 months old (boundary age), trying 6 months",
+      "tags": ["boundary", "age"],
+      "asOf": "2026-11-15",
+      "input": {
+        "profile": {
+          "questionSet": "female",
+          "pathway": "trying",
+          "birthYear": 1991,
+          "birthMonth": 12
+        },
+        "answers": {
+          "upcoming_fertility_affecting_treatment": "no",
+          "trying_duration_months": 6,
+          "cycles_outside_range_12m": "none"
+        },
+        "results": []
+      },
+      "expected": { "level": "L2", "mustFire": ["T2"], "mustNotFire": [] },
+      "severityIfWrong": "major",
+      "rationale": "Within 1 month of age 35 threshold (419 months), cautious band treats age as 35 and triggers T2."
+    }
+  ]
+}
