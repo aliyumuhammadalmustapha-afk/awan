@@ -951,23 +951,23 @@ export const P31AccountScreen: React.FC<AccountScreenProps> = ({
           {en.account.signin.signOutSheetBody}
         </p>
         <div className="flex flex-col gap-8">
-          <Button
-            variant="secondary"
-            onClick={() => {
-              setSignOutSheetOpen(false);
-              onNavigate('/p6-phone');
-            }}
-          >
-            {en.account.signin.keepDataSignOut}
-          </Button>
-          <Button
-            variant="destructive"
-            onClick={() => {
-              store.resetAllData();
-              setSignOutSheetOpen(false);
-              onNavigate('/p6-phone');
-            }}
-          >
+            <Button
+              variant="secondary"
+              onClick={() => {
+                setSignOutSheetOpen(false);
+                onNavigate('/p1-welcome');
+              }}
+            >
+              {en.account.signin.keepDataSignOut}
+            </Button>
+            <Button
+              variant="destructive"
+              onClick={() => {
+                store.resetAllData();
+                setSignOutSheetOpen(false);
+                onNavigate('/p1-welcome');
+              }}
+            >
             {en.account.signin.eraseDataSignOut}
           </Button>
         </div>

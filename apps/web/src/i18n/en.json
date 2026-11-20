@@ -137,9 +137,9 @@
     "name": {
       "step": "Step 3 of 4",
       "title": "What should we call you?",
-      "helper": "A nickname is fine. It stays on this phone.",
-      "placeholder": "Your name or nickname",
-      "error": "Tell us a name or nickname to use."
+      "helper": "Your user name stays on this phone.",
+      "placeholder": "User name",
+      "error": "Tell us a user name to use."
     },
     "pin": {
       "step": "Step 4 of 4",
@@ -367,7 +367,7 @@
     "lockNow": "Lock now",
     "signOut": "Sign out",
     "rows": {
-      "profile": { "title": "Profile", "desc": "Nickname, birth month and year, question set, stage and language" },
+      "profile": { "title": "Profile", "desc": "User name, birth month and year, question set, stage and language" },
       "privacy": { "title": "Privacy and consent", "desc": "Control what is saved on this phone and optional sharing" },
       "notifications": { "title": "Notifications", "desc": "Reminder rhythm, quiet hours and discreet preview" },
       "security": { "title": "Security and discretion", "desc": "4-digit PIN, auto-lock timer and lock on background" },
