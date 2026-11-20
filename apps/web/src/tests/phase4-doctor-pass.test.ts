@@ -60,4 +60,16 @@ describe('Phase 4 Doctor Pass Zero-Knowledge Encryption & Clinician View (P28, P
       expect(updated?.status).toBe('Revoked');
     }
   });
+
+  it('isolates Doctor Passes per account/persona and clears passes on resetAllData', () => {
+    const store = useCheckInStore.getState();
+    store.loadDemoPersona('ahmed');
+    expect(useCheckInStore.getState().passes).toHaveLength(0);
+
+    store.loadDemoPersona('layla');
+    expect(useCheckInStore.getState().passes.length).toBeGreaterThan(0);
+
+    store.resetAllData();
+    expect(useCheckInStore.getState().passes).toHaveLength(0);
+  });
 });

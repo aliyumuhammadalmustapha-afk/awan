@@ -109,6 +109,8 @@ export interface CheckInState {
   setFollowUpReminderEnabled: (enabled: boolean) => void;
 
   // Phase 3 & 4: Doctor Passes & Demo Personas
+  activeAccountKey: string;
+  passesByAccount: Record<string, DoctorPassEntry[]>;
   passes: DoctorPassEntry[];
   revokeAllPasses: () => void;
   revokePass: (id: string) => void;
@@ -291,7 +293,18 @@ export const useCheckInStore = create<CheckInState>()(
       lockOnBackground: true,
       setLockOnBackground: (val) => set({ lockOnBackground: val }),
       onboardingComplete: false,
-      setOnboardingComplete: (done) => set({ onboardingComplete: done }),
+      setOnboardingComplete: (done) =>
+        set((state) => {
+          if (done && state.activeAccountKey === 'layla' && state.nickname.trim().toLowerCase() !== 'layla') {
+            const customKey = `user:${state.nickname.trim().toLowerCase()}`;
+            return {
+              onboardingComplete: true,
+              activeAccountKey: customKey,
+              passes: state.passesByAccount[customKey] || [],
+            };
+          }
+          return { onboardingComplete: done };
+        }),
 
       results: [
         {
@@ -362,6 +375,14 @@ export const useCheckInStore = create<CheckInState>()(
       setFollowUpReminderEnabled: (enabled) =>
         set({ followUpReminderEnabled: enabled }),
 
+      activeAccountKey: 'layla',
+      passesByAccount: {
+        layla: INITIAL_PASSES,
+        ahmed: [],
+        priya: [],
+        tariq: [],
+        custom: [],
+      },
       passes: INITIAL_PASSES,
       revokeAllPasses: () =>
         set((state) => {
@@ -369,19 +390,24 @@ export const useCheckInStore = create<CheckInState>()(
             .filter((p) => p.status === 'Active')
             .map((p) => p.token);
           markEncryptedPassesRevoked(revokedTokens);
+          const nextPasses = state.passes.map((p) =>
+            p.status === 'Active'
+              ? {
+                  ...p,
+                  status: 'Revoked' as const,
+                  accessLog: [
+                    ...p.accessLog,
+                    { timestamp: '19 Nov 2026, 18:50', event: 'Revoked by user' },
+                  ],
+                }
+              : p
+          );
           return {
-            passes: state.passes.map((p) =>
-              p.status === 'Active'
-                ? {
-                    ...p,
-                    status: 'Revoked',
-                    accessLog: [
-                      ...p.accessLog,
-                      { timestamp: '19 Nov 2026, 18:50', event: 'Revoked by user' },
-                    ],
-                  }
-                : p
-            ),
+            passes: nextPasses,
+            passesByAccount: {
+              ...state.passesByAccount,
+              [state.activeAccountKey]: nextPasses,
+            },
           };
         }),
       revokePass: (id) =>
@@ -390,27 +416,40 @@ export const useCheckInStore = create<CheckInState>()(
           if (target) {
             markEncryptedPassesRevoked([target.token]);
           }
+          const nextPasses = state.passes.map((p) =>
+            p.id === id
+              ? {
+                  ...p,
+                  status: 'Revoked' as const,
+                  accessLog: [
+                    ...p.accessLog,
+                    { timestamp: '19 Nov 2026, 18:50', event: 'Revoked by user' },
+                  ],
+                }
+              : p
+          );
           return {
-            passes: state.passes.map((p) =>
-              p.id === id
-                ? {
-                    ...p,
-                    status: 'Revoked',
-                    accessLog: [
-                      ...p.accessLog,
-                      { timestamp: '19 Nov 2026, 18:50', event: 'Revoked by user' },
-                    ],
-                  }
-                : p
-            ),
+            passes: nextPasses,
+            passesByAccount: {
+              ...state.passesByAccount,
+              [state.activeAccountKey]: nextPasses,
+            },
           };
         }),
       addPass: (pass) =>
-        set((state) => ({
-          passes: [pass, ...state.passes],
-        })),
+        set((state) => {
+          const nextPasses = [pass, ...state.passes];
+          return {
+            passes: nextPasses,
+            passesByAccount: {
+              ...state.passesByAccount,
+              [state.activeAccountKey]: nextPasses,
+            },
+          };
+        }),
 
       loadDemoPersona: (persona) => {
+        const personaPasses = get().passesByAccount[persona] || [];
         if (persona === 'layla') {
           const out = evaluateCheckIn({
             profile: { questionSet: 'female', pathway: 'thinking_ahead', ageYears: 28 },
@@ -421,12 +460,16 @@ export const useCheckInStore = create<CheckInState>()(
             },
           });
           set({
+            activeAccountKey: 'layla',
+            passes: personaPasses,
             nickname: 'Layla',
             whoFor: 'female',
             stage: 'thinking_ahead',
             birthYear: 1998,
             birthMonth: 5,
             saveCheckIns: true,
+            checkInHistory: [],
+            ownWordsNote: '',
             latestEvaluation: out,
           });
         } else if (persona === 'ahmed') {
@@ -439,12 +482,17 @@ export const useCheckInStore = create<CheckInState>()(
             },
           });
           set({
+            activeAccountKey: 'ahmed',
+            passes: personaPasses,
             nickname: 'Ahmed',
             whoFor: 'male',
             stage: 'preparing',
             birthYear: 1994,
             birthMonth: 3,
             saveCheckIns: true,
+            results: [],
+            checkInHistory: [],
+            ownWordsNote: '',
             latestEvaluation: out,
           });
         } else if (persona === 'priya') {
@@ -458,12 +506,17 @@ export const useCheckInStore = create<CheckInState>()(
             },
           });
           set({
+            activeAccountKey: 'priya',
+            passes: personaPasses,
             nickname: 'Priya',
             whoFor: 'female',
             stage: 'trying',
             birthYear: 1991,
             birthMonth: 6,
             saveCheckIns: true,
+            results: [],
+            checkInHistory: [],
+            ownWordsNote: '',
             latestEvaluation: out,
           });
         } else if (persona === 'tariq') {
@@ -475,12 +528,17 @@ export const useCheckInStore = create<CheckInState>()(
             },
           });
           set({
+            activeAccountKey: 'tariq',
+            passes: personaPasses,
             nickname: 'Tariq',
             whoFor: 'male',
             stage: 'thinking_ahead',
             birthYear: 1997,
             birthMonth: 8,
             saveCheckIns: true,
+            results: [],
+            checkInHistory: [],
+            ownWordsNote: '',
             latestEvaluation: out,
           });
         }
@@ -525,6 +583,15 @@ export const useCheckInStore = create<CheckInState>()(
           includeNoteInPass: false,
           checkInHistory: [],
           latestEvaluation: null,
+          activeAccountKey: 'custom',
+          passes: [],
+          passesByAccount: {
+            layla: INITIAL_PASSES,
+            ahmed: [],
+            priya: [],
+            tariq: [],
+            custom: [],
+          },
           isLocked: false,
           failedPinAttempts: 0,
           lockCooldownSeconds: 0,
