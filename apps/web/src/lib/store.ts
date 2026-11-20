@@ -128,23 +128,35 @@ export interface CheckInState {
 const ENCRYPTED_PASS_STORAGE_KEY = 'awan-encrypted-passes';
 
 function markEncryptedPassesRevoked(tokens: string[]) {
-  if (tokens.length === 0 || typeof localStorage === 'undefined') return;
-  try {
-    const raw = localStorage.getItem(ENCRYPTED_PASS_STORAGE_KEY);
-    if (!raw) return;
-    const map = JSON.parse(raw);
-    let changed = false;
-    for (const token of tokens) {
-      if (map[token]) {
-        map[token].revoked = true;
-        changed = true;
+  if (tokens.length === 0) return;
+  if (typeof localStorage !== 'undefined') {
+    try {
+      const raw = localStorage.getItem(ENCRYPTED_PASS_STORAGE_KEY);
+      if (raw) {
+        const map = JSON.parse(raw);
+        let changed = false;
+        for (const token of tokens) {
+          if (map[token]) {
+            map[token].revoked = true;
+            changed = true;
+          }
+        }
+        if (changed) {
+          localStorage.setItem(ENCRYPTED_PASS_STORAGE_KEY, JSON.stringify(map));
+        }
       }
+    } catch {
+      // Ignore storage errors
     }
-    if (changed) {
-      localStorage.setItem(ENCRYPTED_PASS_STORAGE_KEY, JSON.stringify(map));
-    }
-  } catch {
-    // Ignore storage errors
+  }
+  if (typeof fetch === 'function') {
+    fetch('/api/passes', {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tokens }),
+    }).catch(() => {
+      // Ignore offline/local dev errors
+    });
   }
 }
 

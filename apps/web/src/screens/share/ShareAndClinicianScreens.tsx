@@ -378,6 +378,21 @@ export const P29CreatePassScreen: React.FC<ShareScreenProps> = ({
       snapshot.expiresAt,
       expiresAtMs
     );
+    if (typeof fetch === 'function') {
+      fetch('/api/passes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          token,
+          ciphertextB64: bundle.ciphertextB64,
+          ivB64: bundle.ivB64,
+          expiresAt: snapshot.expiresAt,
+          expiresAtMs,
+        }),
+      }).catch(() => {
+        // Offline / local dev fallback uses localStorage
+      });
+    }
 
     const newEntry: DoctorPassEntry = {
       id: `pass-${Date.now()}`,
@@ -717,39 +732,86 @@ export const P32ClinicianViewScreen: React.FC<ShareScreenProps> = ({
     }
 
     const storePass = passes.find((p) => p.token === token);
-    const bundle = getEncryptedBundleLocally(token);
+    const localBundle = getEncryptedBundleLocally(token);
 
-    if (storePass?.status === 'Revoked' || bundle?.revoked) {
+    if (storePass?.status === 'Revoked' || localBundle?.revoked) {
       setUnavailableReason('revoked');
       return;
     }
     if (
       storePass?.status === 'Expired' ||
-      (bundle?.expiresAtMs && bundle.expiresAtMs < Date.now())
+      (localBundle?.expiresAtMs && localBundle.expiresAtMs < Date.now())
     ) {
       setUnavailableReason('expired');
       return;
     }
 
-    if (bundle && key) {
-      decryptPassSnapshot<ClinicianSnapshotPayload>(
-        bundle.ciphertextB64,
-        bundle.ivB64,
-        key
-      )
-        .then((decoded) => {
+    let cancelled = false;
+
+    const loadAndDecrypt = async () => {
+      let bundle = localBundle;
+      if (typeof fetch === 'function') {
+        try {
+          const res = await fetch(`/api/passes?token=${encodeURIComponent(token)}`);
+          if (res.ok) {
+            const remote = (await res.json()) as {
+              ciphertextB64: string;
+              ivB64: string;
+              expiresAt: string;
+              expiresAtMs?: number;
+              revoked: boolean;
+            };
+            if (remote.revoked) {
+              if (!cancelled) setUnavailableReason('revoked');
+              return;
+            }
+            if (remote.expiresAtMs && remote.expiresAtMs < Date.now()) {
+              if (!cancelled) setUnavailableReason('expired');
+              return;
+            }
+            if (remote.ciphertextB64 && remote.ivB64) {
+              bundle = remote;
+            }
+          }
+        } catch {
+          // Offline / local dev fallback uses localStorage
+        }
+      }
+
+      if (cancelled) return;
+
+      if (bundle && key) {
+        try {
+          const decoded = await decryptPassSnapshot<ClinicianSnapshotPayload>(
+            bundle.ciphertextB64,
+            bundle.ivB64,
+            key
+          );
+          if (!cancelled) {
+            setUnavailableReason(null);
+            setSnapshot(decoded);
+          }
+        } catch {
+          if (!cancelled) setUnavailableReason('revoked');
+        }
+      } else if (
+        storePass &&
+        storePass.status === 'Active' &&
+        key === storePass.keyFragment
+      ) {
+        if (!cancelled) {
           setUnavailableReason(null);
-          setSnapshot(decoded);
-        })
-        .catch(() => {
-          setUnavailableReason('revoked');
-        });
-    } else if (storePass && storePass.status === 'Active' && key === storePass.keyFragment) {
-      setUnavailableReason(null);
-      setSnapshot(DEMO_CLINICIAN_SNAPSHOT);
-    } else {
-      setUnavailableReason('revoked');
-    }
+          setSnapshot(DEMO_CLINICIAN_SNAPSHOT);
+        }
+      } else {
+        if (!cancelled) setUnavailableReason('revoked');
+      }
+    };
+
+    loadAndDecrypt();
+    return () => {
+      cancelled = true;
+    };
   }, [queryState, passes]);
 
   if (unavailableReason) {

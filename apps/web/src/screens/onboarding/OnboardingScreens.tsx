@@ -63,16 +63,16 @@ export const P1WelcomeScreen: React.FC<OnboardingScreenProps> = ({
     >
       <AppShell
         topRightAction={{
-          label: en.common.skip,
-          onClick: () => onNavigate('/p6-phone'),
+          label: 'Quick demo',
+          onClick: () => onNavigate('/home'),
         }}
         primaryAction={{
           label: en.common.next,
           onClick: () => onNavigate('/p2-how-it-works'),
         }}
         secondaryAction={{
-          label: en.common.alreadyHaveAccountSignIn,
-          onClick: () => onNavigate('/p6-phone?mode=signin'),
+          label: 'Explore all screens (/routes)',
+          onClick: () => onNavigate('/routes'),
         }}
       >
         <div className="flex-1 flex flex-col items-center justify-center text-center gap-24 py-32">
